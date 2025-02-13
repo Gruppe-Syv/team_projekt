@@ -1,0 +1,14 @@
+:root{
+    --bgcol: rgb(236, 236, 236); /*Baggrundsfarven defineres her*/
+    --textcol: rgb(19, 19, 19); /*Textfarven defineres her*/
+    --highlight: #005FAD; /*Highlight farve - bruges på at styre opmærksomhed på f.eks læg i
+    kurv knap*/
+
+}
+
+body{
+    background-color: var(--bgcol); /*Sådan bruges variablerne som defineret ovenfor. Når variablen
+    ændres, ændres farven på alle de ting hvor denne variabel bruges. Man kan også bruge disse variabler
+    i lokale CSS filer (eks: index.css) selv om de er defineret i dette globale stylesheet.*/
+
+}
