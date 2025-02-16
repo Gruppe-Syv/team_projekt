@@ -1,14 +1,115 @@
-:root{
-    --bgcol: rgb(236, 236, 236); /*Baggrundsfarven defineres her*/
-    --textcol: rgb(19, 19, 19); /*Textfarven defineres her*/
-    --highlight: #005FAD; /*Highlight farve - bruges på at styre opmærksomhed på f.eks læg i
+:root {
+  --bgcol: rgb(236, 236, 236); /*Baggrundsfarven defineres her*/
+  --textcol: rgb(19, 19, 19); /*Textfarven defineres her*/
+  --highlight: #005fad; /*Highlight farve - bruges på at styre opmærksomhed på f.eks læg i
     kurv knap*/
-
+  --darkerhighlight: #00345f;
+  list-style: none;
 }
 
-body{
-    background-color: var(--bgcol); /*Sådan bruges variablerne som defineret ovenfor. Når variablen
+body {
+  background-color: var(
+    --bgcol
+  ); /*Sådan bruges variablerne som defineret ovenfor. Når variablen
     ændres, ændres farven på alle de ting hvor denne variabel bruges. Man kan også bruge disse variabler
     i lokale CSS filer (eks: index.css) selv om de er defineret i dette globale stylesheet.*/
-
+  padding: 0;
+  margin: 0;
 }
+
+header {
+  width: 100%;
+  position: fixed;
+  margin: 0;
+}
+
+.headerbg {
+  background-color: #f9fcff;
+  opacity: 90%;
+  backdrop-filter: blur(8px);
+}
+
+#headercontent {
+  position: absolute;
+  overflow-x: hidden;
+  top: 0;
+  width: 100vw;
+  min-height: 100vh;
+  transition: 0.1s ease-in-out;
+  transform: translateX(100%);
+  /* background-color: red; */
+  /*background-color: red; ovenfor er bare for debugging.*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4%;
+}
+
+a.logo {
+  height: 20vh;
+  aspect-ratio: 1 / 1;
+  background-color: var(--darkerhighlight);
+  mask-image: url(nua_logo.svg);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  transition: 0.1s ease-in-out;
+}
+
+a.logo:hover {
+  background-color: var(--highlight);
+}
+
+#headercontent.active {
+  transform: translateX(0);
+}
+
+/* Burger animation: */
+
+button#burger {
+  border-radius: 0;
+  background-color: transparent;
+  /* background-color: red; */
+  /*background-color: red; ovenfor er bare for debugging.*/
+  cursor: pointer;
+  border-style: none;
+  width: 50px;
+  aspect-ratio: 7/6;
+  padding: 0;
+  margin: 1%;
+  position: relative;
+  z-index: 1;
+}
+
+.line {
+  position: absolute;
+  background-color: var(--darkerhighlight);
+  width: 100%;
+  height: 2px;
+  border-radius: 10px;
+  transition: 0.1s ease-in-out;
+  transform-origin: 100%;
+}
+
+button#burger :first-child {
+  transform: translateY(-2cqh);
+}
+
+button#burger :last-child {
+  transform: translateY(2cqh);
+}
+
+button#burger.active :first-child {
+  transform: translateX(-15%) rotate(45deg) scaleX(50%);
+}
+
+button#burger.active :nth-child(2) {
+  transform: translateX(-15%) scaleX(70%);
+}
+
+button#burger.active :last-child {
+  transform: translateX(-15%) rotate(-45deg) scaleX(50%);
+}
+
+/*-------------------*/
