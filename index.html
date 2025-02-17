@@ -1,36 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sample Name</title>
     <!-- Nødvendige fonte etc. skal linkes herunder på ALLE HTML-sider: -->
-    <link rel="stylesheet" href="assets/base.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="assets/base.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <!-- Fonte: -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="assets/nua_logo.svg" type="image/x-icon">
     <!-- ------ -->
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <button id="burger">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </button>
-        <div id="headercontent" class="headerbg">
-            <a href="index.html" class="logo"></a>
-            <nav>
-                <li id="beauty"></li>
-                <li id="home"></li>
-            </nav>
-
-        </div>
+      <button id="burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </button>
+      <div id="headercontent" class="headerbg">
+        <a href="index.html" class="logo"></a>
+        <nav>
+            <div id="beauty">
+                <div class="dropdown">
+                    <div class="dropdownheader">
+                        <p>Beauty</p>
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="navcontent">
+                        <div class="dropdown">
+                            <div class="dropdownheader">
+                                <p>Beauty</p>
+                                <div class="arrow"></div>
+                            </div>
+                            <div class="navcontent">
+                                <div class="dropdown">
+                                    <div class="dropdownheader">
+                                        <p>Beauty</p>
+                                        <div class="arrow"></div>
+                                    </div>
+                                    <div class="navcontent">
+                                        
+                                    </div>
+                                </div> 
+                            </div>
+                        </div> 
+                    </div>
+                </div> 
+            </div> 
         
-
+            <div id="fragrances">
+                <div class="dropdown">
+                    <div class="dropdownheader">
+                        <p>Fragrances</p>
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="navcontent"></div>
+                </div>
+            </div>
         
-       
+            <div id="skincare">
+                <div class="dropdown">
+                    <div class="dropdownheader">
+                        <p>Skin Care</p>
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="navcontent"></div>
+                </div>
+            </div>
+        
+            <div id="home">
+                <div class="dropdown">
+                    <div class="dropdownheader">
+                        <p>Home</p>
+                        <div class="arrow"></div>
+                    </div>
+                    <div class="navcontent"></div>
+                </div>
+            </div>
+        </nav>
+        
+      </div>
     </header>
-    
-<script src="assets/base.js"></script>
-<script src="js/index.js"></script>
-</body>
+
+    <script src="assets/base.js"></script>
+    <script src="js/index.js"></script>
+  </body>
 </html>
