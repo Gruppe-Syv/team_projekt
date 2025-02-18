@@ -182,13 +182,20 @@ button#burger.active :last-child {
 
 
 
-#headercontent .dropdownheader > p{
+#headercontent .dropdownheader > p,
+#headercontent .dropdown > a{
     margin: 2%;
     width: 100%;
     text-align: center;
     font-family: "Josefin Sans", sans-serif;
     color: var(--darkerhighlight);
     font-size: 1.5rem;
+}
+
+#headercontent .dropdown > p{
+    color: var(--highlight);
+
+
 }
 
 #headercontent .dropdownheader .arrow{
@@ -202,8 +209,8 @@ button#burger.active :last-child {
     transition: 0.05s ease-in-out;
 
 }
-#headercontent .navcontent .dropdown.active > .dropdownheader > .arrow,
-#headercontent div > .dropdown.active > .dropdownheader > .arrow{
+
+.dropdown.active > .dropdownheader > .arrow{
     transform: rotate(90deg);
 
 }
@@ -228,7 +235,8 @@ button#burger.active :last-child {
 
 }
 
-#headercontent .navcontent .dropdown {
+#headercontent .navcontent > * {
+    display: block;
     margin-top: 5%;
     margin-left: 10%; /* Indent more for each level */
     width: 90%; /* Prevent expanding beyond screen */
