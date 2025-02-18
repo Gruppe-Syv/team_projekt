@@ -1,49 +1,58 @@
 /*--------------------About us css--------------------**/
 
-/*------------Rese---------- */
+/*------------Reset---------- */
 * {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif; /*DEN SKAL ÆNDRES*/
 }
 
-/*---------BODY--------*/
-body {
-  background-color: #fdfcfa;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
+main {
+  margin: 0 auto;
 }
 
 /*-Mobile first version (En kollone - grid)-*/
+h1 {
+  font-family: "lora";
+  font-size: 30px;
+  padding-top: 70px;
+  padding-bottom: 30px;
+  font-weight: 300;
+}
+
+h2 {
+  font-family: "lora";
+  font-size: 22px;
+  padding-bottom: 30px;
+}
+
+p {
+  padding-top: 80px;
+  text-align: left;
+  padding: 20px;
+}
+
+.find_us p {
+  margin-left: 100px;
+}
+
 .about_container {
   display: flex;
-  flex-direction: column;
-  max-width: 600px;
-  width: 100%;
+  flex-direction: column; /* Start med én kolonne på mobile */
   gap: 20px;
+  max-width: 1000px;
+  width: 100%;
 }
 
-.about h1,
-.find_us h2 {
-  margin-bottom: 15px;
-  margin: 40px;
+/* Justering af sektioner */
+.about {
+  flex: 1;
 }
 
-.about p,
-.find_us p {
-  margin-bottom: 10px;
-  line-height: 1.5;
-  margin: 40px;
+.find_us a {
+  color: black;
 }
 
-.find_us ul {
-  list-style: none;
-  padding: 0;
-  margin: 40px;
-}
-
-/*-----------Billederne--------*/
+/* Billederne i højre sektion */
 .image,
 .map {
   display: flex;
@@ -51,50 +60,64 @@ body {
   align-items: center;
 }
 
+.map {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
 .image img,
 .map img {
-  max-width: 100%;
+  max-width: 70%;
+  width: 70%;
 }
 
-.map a img {
-  transition: opacity 0.3s ease;
-}
-
-.map a:hover img {
-  opacity: 0.8;
-}
-
-/* ---- Desktop version (to grid - kolloner) ---- */
+/* -------------------- Desktop version (opdelt i kolonner) -------------------- */
 @media (min-width: 768px) {
   .about_container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 40px;
-    max-width: 1000px;
+    grid-template-columns: 1fr 1fr; /* To kolonner */
+    gap: 20px;
   }
 
-  /*--------About Us-------*/
   .about {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
+    grid-column: 1 / 2; /* Teksten til venstre */
   }
 
-  /*--------Billederne------*/
   .image {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
+    grid-column: 2 / 3; /* Billedet til højre */
   }
 
-  /*-------Find Us------*/
   .find_us {
     grid-column: 1 / 2;
-    grid-row: 2 / 3;
   }
 
-  /*---------Map-------*/
   .map {
     grid-column: 2 / 3;
-    grid-row: 2 / 3;
+    padding-top: 90px;
+    padding-bottom: 40px;
+  }
+
+  .image img,
+  .map img {
+    max-width: 100%;
+    width: 5100%;
+  }
+
+  .image {
+    padding-top: 150px;
+  }
+
+  .find_us p {
+    margin-left: 0px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 300;
   }
 }
