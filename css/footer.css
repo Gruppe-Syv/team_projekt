@@ -1,0 +1,46 @@
+footer {
+  background-color: #f2f8ff;
+}
+
+.footer-container {
+  display: flex; /* Brug Flexbox for at placere sektionerne i en række */
+  justify-content: space-between; /* Placer elementerne med plads mellem */
+  align-items: center; /* Center tekst vertikalt */
+}
+
+.footer-container > div {
+  flex: 1; /* Giver hver sektion lige plads */
+  padding: 10px;
+}
+
+.contact-us,
+.logo,
+.information {
+  text-align: center;
+}
+
+.information a {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: black;
+  font-family: "open sans";
+  font-weight: 200;
+  padding: 10px;
+}
+
+.information :hover {
+  color: var(--darkerhighlight);
+}
+
+.information p {
+  text-align: left;
+}
+
+.footer-container .logo img {
+  width: 100px; /* Juster størrelsen på logoet */
+}
+
+footer p {
+  padding: 10px;
+}
