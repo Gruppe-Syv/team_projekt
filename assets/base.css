@@ -162,11 +162,11 @@ button#burger.active :nth-child(2) {
 button#burger.active :last-child {
   transform: translateX(-15%) rotate(-45deg) scaleX(50%);
 }
-
+#headercontent a.cart,
 #headercontent .dropdown{
     width: 90vw;
-    margin-bottom: 10%;
     border-radius: 5vw;
+    margin: 4%;
 }
 
 #headercontent .dropdownheader{
@@ -183,7 +183,9 @@ button#burger.active :last-child {
 
 
 #headercontent .dropdownheader > p,
-#headercontent .dropdown > a{
+#headercontent a.cart > p,
+#headercontent .navcontent > a{
+    text-transform: capitalize;
     margin: 2%;
     width: 100%;
     text-align: center;
@@ -192,13 +194,26 @@ button#burger.active :last-child {
     font-size: 1.5rem;
 }
 
+#headercontent .navcontent > a {
+    margin: 10%;
+    transform: translateX(-10%);
+    text-align: right;
+
+    margin-left: 0%;
+    color: var(--darkerhighlight);
+    font-size: 1.1rem;
+
+
+
+}
+
 #headercontent .dropdown > p{
     color: var(--highlight);
 
 
 }
 
-#headercontent .dropdownheader .arrow{
+#headercontent .dropdown .dropdownheader .arrow{
     height: auto;
     width: 1.5rem;
     mask-image: url(ui/actions/chevron_r.svg);
@@ -207,11 +222,12 @@ button#burger.active :last-child {
     mask-size: contain;
     background-color: var(--darkerhighlight);
     transition: 0.05s ease-in-out;
+    transform:  translateX(-80%);
 
 }
 
-.dropdown.active > .dropdownheader > .arrow{
-    transform: rotate(90deg);
+#headercontent .dropdown.active > .dropdownheader > .arrow{
+    transform:  translateX(-80%) rotate(90deg);
 
 }
 .navcontent{
@@ -240,6 +256,36 @@ button#burger.active :last-child {
     margin-top: 5%;
     margin-left: 10%; /* Indent more for each level */
     width: 90%; /* Prevent expanding beyond screen */
+}
+
+#headercontent a.cart{
+
+    background-color: var(--highlight);
+    display: flex;
+    justify-content: space-evenly;
+    cursor: pointer;
+    border-radius: 5vw;
+    margin-right: 10vw;
+    width: 80vw;
+    text-decoration: none;
+    
+}
+
+#headercontent a.cart > p{
+    color: var(--bgcol);
+    
+}
+
+#headercontent a.cart > .cart{
+    height: auto;
+    width: 1.5rem;
+    mask-image: url(ui/cart/shopping_cart_empty.svg);
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: var(--bgcol);
+    transition: 0.05s ease-in-out;
+    transform:  translateX(-120%) scale(110%);
 }
 
 /*-------------------*/
