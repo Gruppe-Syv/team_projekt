@@ -1,0 +1,153 @@
+.overskrift a {
+  color: var(--highlight);
+}
+
+.overskrift {
+  width: 30%;
+  display: flex;
+  justify-content: center; /* Centrerer vandret */
+  align-items: center; /* Centrerer lodret */
+  margin: 0 auto; /* Centrerer elementet i forhold til forælderens bredde */
+  padding-top: 60px;
+  padding-bottom: 20px;
+}
+
+.billeder {
+  display: none;
+}
+
+h1 {
+  display: none;
+}
+
+h2 {
+  display: none;
+  font-family: "lora";
+  font-size: 22px;
+}
+
+.desktop-knap {
+  display: none;
+}
+
+.mobile-knap {
+  border: 1px;
+  padding: 8px;
+  background-color: var(--highlight);
+  border-radius: 10px;
+  color: var(--bgcol);
+  display: flex; /* Synlig på mobil */
+  justify-content: center; /* Centrerer tekst i knappen */
+  width: 50%; /* Justér bredden */
+  max-width: 200px;
+  cursor: pointer;
+}
+
+.knapper {
+  display: flex;
+  flex-direction: column; /* Stabler knapperne lodret */
+  align-items: center; /* Centrerer dem horisontalt */
+  gap: 20px; /* Afstand mellem knapper */
+  padding-top: 40px;
+}
+
+.mobile-knap:hover {
+  background-color: #6094bf;
+}
+
+p {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  font-family: "open sans";
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .billeder {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    justify-content: center;
+    gap: 10px;
+    padding-top: 30px;
+  }
+
+  .billeder img {
+    object-fit: cover;
+  }
+
+  .knapper {
+    background-color: #f2f8ff;
+    display: flex;
+    flex-direction: row; /* Lægger knapperne på en linje */
+    justify-content: center; /* Centrerer knapperne samlet */
+    gap: 50px; /* Afstand mellem knapper */
+    padding-bottom: 100px;
+    padding-top: 100px;
+  }
+
+  .desktop-knap {
+    display: flex; /* Flexbox på knappen */
+    background-color: var(--highlight);
+    border-radius: 10px;
+    color: var(--bgcol);
+    padding: 10px;
+    text-decoration: none;
+    flex: 1; /* Gør knapperne lige store */
+    text-align: center;
+    align-items: center; /* Centrerer teksten lodret */
+    justify-content: center; /* Centrerer teksten vandret */
+    max-width: 170px; /* Maksimal bredde */
+    border: none;
+    cursor: pointer;
+  }
+
+  .desktop-knap a {
+    text-align: center;
+  }
+
+  .desktop-knap:hover {
+    background-color: #6094bf;
+  }
+
+  .mobile-knap {
+    display: none;
+  }
+
+  h1 {
+    display: block;
+    text-align: center;
+    padding-top: 100px;
+    font-family: "lora";
+    font-size: 40px;
+    font-weight: 300;
+  }
+
+  h2 {
+    display: block;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 300;
+  }
+
+  .h1 {
+    display: none;
+  }
+
+  p {
+    font-size: 16px;
+    max-width: 1000px; /* Begræns linjelængden */
+    margin: 0 auto; /* Centrer teksten */
+    word-wrap: break-word; /* Sikrer, at ord brydes, hvis de er for lange */
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .overskrift {
+    display: none;
+  }
+}
