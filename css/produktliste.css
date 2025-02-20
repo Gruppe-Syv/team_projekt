@@ -1,0 +1,98 @@
+/*************** Reset *********************/
+* {
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Layout */
+
+#produktliste {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+.produkt {
+  display: grid;
+  padding: 10px;
+}
+
+.produkt a {
+  display: grid;
+}
+
+.produkt img {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  main {
+    max-width: 1400px;
+    margin: auto;
+  }
+  #produktliste {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}
+
+/* Layout */
+
+/* Styling */
+main {
+  padding-top: 100px;
+}
+
+h1 {
+  padding-left: 10px;
+}
+h1,
+h2 {
+  font-family: "lora";
+}
+
+p,
+span {
+  font-family: "open sans";
+}
+
+.onSale {
+  color: white;
+  background-color: #005fad;
+  padding: 2px 10px 2px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  grid-column: 1;
+  grid-row: 1;
+  place-self: end start;
+  z-index: 2;
+}
+
+.visible {
+  visibility: visible;
+}
+
+.soldOut {
+  padding: 2px 10px 2px 10px;
+  background-color: black;
+  opacity: 100%;
+  color: white;
+  border-radius: 20px;
+  width: fit-content;
+  grid-column: 1;
+  grid-row: 1;
+  place-self: end end;
+  z-index: 2;
+}
+
+a {
+  text-decoration: none;
+}
+/* Styling */
