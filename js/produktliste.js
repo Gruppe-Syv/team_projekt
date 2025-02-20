@@ -1,39 +1,77 @@
+
+
+
 const productlist = document.querySelector("#produktliste");
+const linkedURL = window.location.href;
+const params = new URL(linkedURL).searchParams;
+getData(params);
 
-// Function to retrieve the category from the URL and format it
-function getQueryParam(param) {
-  const urlParams = new URLSearchParams(window.location.search);
-  let category = urlParams.get(param);
+function getData(params) {
+  let category = "";
+  let subCategory = "";
+  let type = "";
 
-  // Convert spaces to dashes for the proper category format
-  if (category) {
-    category = category.replace(/\s+/g, "-").toLowerCase(); // Replace spaces with dashes and make it lowercase
-  }
+  params.forEach((value, key) => {
+    if (key === "category") {
+      category = value;
+    } else {
+      subCategory = key;
+      type = value;
+    }
+  });
 
-  return category;
+  let url = `https://dummyjson.com/products/category/${category}`;
+  
+  console.log("URL: " + url);
+  console.log(
+    "Category: " +
+      category +
+      ", Subcategory: " +
+      subCategory +
+      ", Type: " +
+      type
+  );
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log("URL (fetch(url)): " + url);
+      console.log("API Response:", data.products);
+      showProducts(data.products, subCategory, type);
+    });
+  console.log("Linked URL: " + linkedURL);
 }
 
-// Get the category from the URL
-const category = getQueryParam("category");
 
-async function getData() {
-  try {
-    // If a category is specified, fetch only that category's products
-    const categoryToFetch = category || "beauty"; // Default to "beauty" if no category is specified
+function showProducts(products, subCategory, type) {
+  let desiredProducts = products
 
-    const response = await fetch(`https://dummyjson.com/products/category/${categoryToFetch}`);
-    const data = await response.json();
-
-    showProducts(data.products); // Show products for the specific category
-  } catch (error) {
-    console.error("Error fetching data:", error);
+  console.log("Products received:", products);
+  console.log(
+    "(showProducts(products, subCategory, type)) Subcategory:",
+    subCategory,
+    "Type:",
+    type
+  );
+  const typeName = type
+    .replace(/e_and_g/g, "e & g")
+    .replace(/_/g, " ")
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+  console.log("typeName", typeName);
+  if (subCategory && type) {
+    desiredProducts = products.filter(product => {
+      return product[subCategory] === typeName;
+    });
   }
-}
+  
 
-function showProducts(products) {
-  const markup = products
+
+
+  const markup = desiredProducts
+
     .map(
-      (product) => `<div class="produkt">
+      (product) => 
+        
+        `<div class="produkt">
           <a href="produkt.html?id=${product.id}">
             <img
               src="${product.thumbnail}"
@@ -41,12 +79,11 @@ function showProducts(products) {
             />
           </a>
           <h3>${product.title}</h3>
-          <p>Pris: ${product.price} DKK</p>
+          <span class="newPrice"> Now: kr. ${product.price}</span>
+          <p>Pris: kr. ${product.price}</p>
         </div>`
     )
     .join("");
 
   productlist.innerHTML = markup;
 }
-
-getData();
