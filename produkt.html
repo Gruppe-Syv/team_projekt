@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="da">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Produkt</title>
+    <link rel="stylesheet" href="css/produkt.css" />
+  </head>
+  <body>
+    <div class="product-page">
+      <div class="product-container">
+        <div class="product-image-wrapper">
+          <img id="product-image" src="" alt="Produktbillede" />
+        </div>
+        <div class="product-info">
+          <p class="breadcrumb"><span id="brand"></span> → <span id="product-type"></span></p>
+          <h1 id="product-title"></h1>
+          <p id="product-price"></p>
+
+          <div class="dropdown">
+            <label>Color</label>
+            <select id="color">
+              <option>Green (eksempel)</option>
+            </select>
+          </div>
+
+          <div class="dropdown">
+            <label>Size</label>
+            <select id="size">
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+              <option>X-Large</option>
+            </select>
+          </div>
+
+          <div class="dropdown">
+            <label>Antal</label>
+            <select id="quantity">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
+
+          <button class="add-to-cart-btn">🛒 Læg i kurv →</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/produkt.js"></script>
+  </body>
+</html>
