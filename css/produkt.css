@@ -1,20 +1,24 @@
 /*---------------Reset-------------------*/
-body {
+
+/* body {
     font-family: "Open Sans", sans-serif;
-    background-color: #fdfcfa;
+    background-color: var(--bgcolor);
     color: #005fad;
     margin: 0;
     padding: 0;
-}
+} */
+
+
 
 /*----------------Mobile-first-------------*/
 .product-container {
+    margin: 0;
     display: grid;
     grid-template-columns: 1fr;
     gap: 20px;
     justify-items: center;
     padding: 20px;
-    margin-top: 100px;
+    padding-top: 100px;
 }
 
 /*---------------Produktbillede------------*/
@@ -35,7 +39,8 @@ body {
     font-size: 14px;
 }
 
-h1 {
+main h1,
+footer h1 {
     font-size: 32px;
     margin: 10px 0;
 }
@@ -46,7 +51,7 @@ h1 {
 }
 
 /*---------Dropdown-styling------*/
-.dropdown {
+/* .dropdown {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -57,7 +62,7 @@ h1 {
     background: white;
     width: 100%;
     max-width: 300px;
-}
+} */
 
 select {
     border: none;
@@ -98,6 +103,7 @@ button.add-to-cart-btn:hover {
         justify-content: center;
         max-width: 900px;
         margin: 50px auto;
+        margin-top: 0;
     }
 
     .product-info {

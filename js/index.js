@@ -26,5 +26,5 @@ function hentData() {
 
 hentData();
 
-// const browseknap = document.querySelector(".mobile-knap");
-// browseknap.addEventListener("mousedown", burgerToggle);
+const browseknap = document.querySelector(".mobile-knap");
+browseknap.addEventListener("mousedown", burgerToggle);

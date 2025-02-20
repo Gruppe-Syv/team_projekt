@@ -11,8 +11,7 @@ function showProduct(data) {
   }
 
   // Create the product markup
-  const markup = `
-    <div class="product-page">
+  const markup = `<div class="product-page">
       <div class="product-container">
         <div class="product-image-wrapper">
           <img src="${data.thumbnail}" alt="Produktbillede" />
