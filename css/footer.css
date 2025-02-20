@@ -27,14 +27,11 @@ footer {
   font-family: "open sans";
   font-weight: 200;
   padding: 10px;
+  padding-top: 0;
 }
 
 .information :hover {
   color: var(--darkerhighlight);
-}
-
-.information p {
-  text-align: left;
 }
 
 .footer-container .logo img {
@@ -43,4 +40,39 @@ footer {
 
 footer p {
   padding: 10px;
+}
+
+.footer-container h2 {
+  font-family: "lora";
+  font-size: 20px;
+  font-weight: 200;
+  padding-left: 0;
+}
+
+.footer-container p a {
+  text-align: center;
+}
+
+.contact-us,
+.information {
+  min-height: 150px; /* Juster denne værdi efter behov */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Holder overskriften på samme niveau */
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-container > div {
+    flex: 1;
+  }
+
+  .logo {
+    display: none; /* Vis logoet igen på desktop */
+  }
 }
