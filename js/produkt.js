@@ -1,35 +1,28 @@
-const urlParams = new URLSearchParams(window.location.search);
-let productID = urlParams.get("id");
+// Retrieve the product ID from the URL
+const productId = new URLSearchParams(window.location.search).get("id");
+const productContainer = document.querySelector(".single_view");
 
-let productContainer = document.querySelector(".product-page");
+let url = `https://dummyjson.com/products/${productId}`; // Modify the URL to include the product ID
 
-if (!productID) {
-  console.error("Intet produkt-ID fundet i URL'en");
-} else {
-  fetch(`https://dummyjson.com/products/${productID}`)
-    .then((response) => response.json())
-    .then((data) => {
-      const imageUrl = data.images && data.images.length > 0 ? data.images[0] : data.thumbnail;
+function showProduct(data) {
+  if (!data) {
+    productContainer.innerHTML = "<p>Product not found!</p>";
+    return;
+  }
 
-      productContainer.innerHTML = `
-        <div class="product-image-wrapper ${data.stock === 0 ? "soldout" : ""}">
-          <div class="product-image">
-            <img id="product-image" src="${imageUrl}" alt="${data.title}">
-            ${data.stock === 0 ? `<div class="soldout-overlay">Udsolgt</div>` : ""}
-          </div>
+  // Create the product markup
+  const markup = `
+    <div class="product-page">
+      <div class="product-container">
+        <div class="product-image-wrapper">
+          <img src="${data.thumbnail}" alt="Produktbillede" />
         </div>
 
+        <!--Info omkring produktet-->
         <div class="product-info">
-          <p class="breadcrumb"><span id="brand">${data.brand}</span> → <span id="product-type">${data.category}</span></p>
+          <p class="breadcrumb"><span id="brand">${data.category}</span> → <span id="product-type">${data.brand}</span></p>
           <h1 id="product-title">${data.title}</h1>
-          <p id="product-price">${data.price} kr</p>
-
-          <div class="dropdown">
-            <label for="color">Color</label>
-            <select id="color">
-              <option>Green (eksempel)</option>
-            </select>
-          </div>
+          <p id="product-price">Price: kr. ${data.price}</p>
 
           <div class="dropdown">
             <label for="size">Size</label>
@@ -53,7 +46,27 @@ if (!productID) {
 
           <button class="add-to-cart-btn">🛒 Læg i kurv →</button>
         </div>
-      `;
-    })
-    .catch((error) => console.error("Fejl ved hentning af produktdata:", error));
+      </div>
+    </div>
+  `;
+
+  productContainer.innerHTML = markup;
 }
+
+function getData() {
+  // Only fetch if the productId exists
+  if (!productId) {
+    productContainer.innerHTML = "<p>No product ID found in the URL!</p>";
+    return;
+  }
+
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => showProduct(data))
+    .catch((error) => {
+      productContainer.innerHTML = "<p>Error fetching product data.</p>";
+      console.error("Error fetching product data:", error);
+    });
+}
+
+getData();

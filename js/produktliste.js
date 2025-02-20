@@ -34,7 +34,7 @@ function showProducts(products) {
   const markup = products
     .map(
       (product) => `<div class="produkt">
-          <a href="produkt.html">
+          <a href="produkt.html?id=${product.id}">
             <img
               src="${product.thumbnail}"
               alt="${product.title}"
