@@ -1,6 +1,12 @@
+header {
+  z-index: 1;
+}
+
 .overskrift a {
   color: var(--highlight);
 }
+
+
 
 .overskrift {
   width: 30%;
@@ -16,11 +22,13 @@
   display: none;
 }
 
-h1 {
+main h1,
+footer h1 {
   display: none;
 }
 
-h2 {
+main h2,
+footer h2 {
   display: none;
   font-family: "lora";
   font-size: 22px;
@@ -55,7 +63,8 @@ h2 {
   background-color: #6094bf;
 }
 
-p {
+main p,
+footer p {
   padding-bottom: 30px;
   padding-top: 30px;
   text-align: center;
@@ -69,16 +78,29 @@ p {
 
 @media (min-width: 768px) {
   .billeder {
-    display: grid;
-    grid-template-columns: repeat(4, auto);
-    justify-content: center;
-    gap: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+  }
+
+  .billeder div{
+    transform: scale(90%);
+    overflow: hidden;
+    
+  }
+
+  p.firsttext{
+    padding-top: 15vh;
+    margin: 0;
   }
 
   .billeder img {
-    object-fit: cover;
+    width: 100%;
+    
+    
   }
 
   .knapper {
@@ -119,7 +141,8 @@ p {
     display: none;
   }
 
-  h1 {
+  h1.main,
+  h1.footer {
     display: block;
     text-align: center;
     padding-top: 80px;
@@ -128,18 +151,21 @@ p {
     font-weight: 300;
   }
 
-  h2 {
+  h2.main,
+  h2.footer {
     display: block;
     text-align: center;
     font-size: 28px;
     font-weight: 300;
   }
 
-  .h1 {
+  .h1.main,
+  h1.footer {
     display: none;
   }
 
-  p {
+  p.main,
+  p.footer {
     font-size: 16px;
     max-width: 1000px; /* Begræns linjelængden */
     margin: 0 auto; /* Centrer teksten */
