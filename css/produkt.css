@@ -1,27 +1,35 @@
+/*---------------Reset-------------------*/
 body {
-    font-family: Arial, sans-serif;
-    background: #ececec;
+    font-family: "Open Sans", sans-serif;
+    background-color: #fdfcfa;
     color: #005fad;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
+/*----------------Mobile-first-------------*/
 .product-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    justify-items: center;
+    padding: 20px;
+    margin-top: 20px;
 }
 
+/*---------------Produktbillede------------*/
 .product-image-wrapper img {
     width: 250px;
+    max-width: 100%;
 }
 
+/*-------------Produktinfo-------------*/
 .product-info {
     text-align: left;
     max-width: 400px;
+    width: 100%;
 }
-hej
 
 .breadcrumb {
     color: #005fad;
@@ -38,6 +46,7 @@ h1 {
     font-weight: bold;
 }
 
+/*---------Dropdown-styling------*/
 .dropdown {
     display: flex;
     justify-content: space-between;
@@ -47,8 +56,20 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
     background: white;
+    width: 100%;
+    max-width: 300px;
 }
 
+select {
+    border: none;
+    background: transparent;
+    font-size: 16px;
+    color: #005fad;
+    cursor: pointer;
+    width: 60%;
+}
+
+/*-----------------Læg i kurv----------------*/
 button.add-to-cart-btn {
     background: #005fad;
     color: #f2f8ff;
@@ -60,4 +81,27 @@ button.add-to-cart-btn {
     display: flex;
     align-items: center;
     gap: 10px;
+    justify-content: center;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 150px; /*KAN VÆRE DET SKAL FJERNES EFTER BILLEDET ER TILFØJET*/
+}
+
+button.add-to-cart-btn:hover {
+    background: #00427a;
+}
+
+/*------------Desktop-version---------*/
+@media (min-width: 768px) {
+    .product-container {
+        grid-template-columns: 1fr 1fr; 
+        align-items: center;
+        justify-content: center;
+        max-width: 900px;
+        margin: 50px auto;
+    }
+
+    .product-info {
+        text-align: left;
+    }
 }

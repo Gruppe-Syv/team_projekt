@@ -9,47 +9,51 @@ if (!productID) {
   fetch(`https://dummyjson.com/products/${productID}`)
     .then((response) => response.json())
     .then((data) => {
-        const imageUrl = data.images && data.images.length > 0 ? data.images[0] : data.thumbnail;
+      const imageUrl = data.images && data.images.length > 0 ? data.images[0] : data.thumbnail;
 
       productContainer.innerHTML = `
-                <div class="product-image-wrapper ${data.stock === 0 ? "soldout" : ""}">
-                    <div class="product-image">
-                        <img src="${imageUrl}" alt="${data.title}">
-                        ${data.stock === 0 ? `<div class="soldout-overlay">Udsolgt</div>` : ""}
-                    </div>
-                </div>
+        <div class="product-image-wrapper ${data.stock === 0 ? "soldout" : ""}">
+          <div class="product-image">
+            <img id="product-image" src="${imageUrl}" alt="${data.title}">
+            ${data.stock === 0 ? `<div class="soldout-overlay">Udsolgt</div>` : ""}
+          </div>
+        </div>
 
-                <div class="product-info">
-                    <h1 class="product-title">${data.title}</h1>
+        <div class="product-info">
+          <p class="breadcrumb"><span id="brand">${data.brand}</span> → <span id="product-type">${data.category}</span></p>
+          <h1 id="product-title">${data.title}</h1>
+          <p id="product-price">${data.price} kr</p>
 
-                    <div class="product-price">
-                        ${data.stock === 0 ? `<span class="soldout-text">UDSOLGT</span>` : ""}
-                        <span class="discounted-price">${data.price} kr</span>
-                        ${data.discountPercentage ? `<span class="original-price">${(data.price / (1 - data.discountPercentage / 100)).toFixed(2)} kr</span>` : ""}
-                    </div>
+          <div class="dropdown">
+            <label for="color">Color</label>
+            <select id="color">
+              <option>Green (eksempel)</option>
+            </select>
+          </div>
 
-                    <div class="product-description">
-                        <p><strong>Brand:</strong> ${data.brand || "N/A"}</p>
-                        <p><strong>Category:</strong> ${data.category}</p>
-                        <p><strong>Description:</strong> ${data.description}</p>
-                    </div>
+          <div class="dropdown">
+            <label for="size">Size</label>
+            <select id="size">
+              <option>Small</option>
+              <option>Medium</option>
+              <option>Large</option>
+              <option>X-Large</option>
+            </select>
+          </div>
 
-                    <!-- Size selector -->
-                    <div class="size-selector">
-                        <label for="size">Vælg størrelse:</label>
-                        <select id="size" name="size" ${data.stock === 0 ? "disabled" : ""}>
-                            <option value="small">Small</option>
-                            <option value="medium">Medium</option>
-                            <option value="large">Large</option>
-                            <option value="xlarge">X-Large</option>
-                        </select>
-                    </div>
+          <div class="dropdown">
+            <label for="quantity">Antal</label>
+            <select id="quantity">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+            </select>
+          </div>
 
-                    <div class="add-to-cart">
-                        <button class="add-to-cart-btn" ${data.stock === 0 ? "disabled" : ""}>Læg i kurv</button>
-                    </div>
-                </div>
-            `;
+          <button class="add-to-cart-btn">🛒 Læg i kurv →</button>
+        </div>
+      `;
     })
     .catch((error) => console.error("Fejl ved hentning af produktdata:", error));
 }
