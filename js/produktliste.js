@@ -1,16 +1,30 @@
 const productlist = document.querySelector("#produktliste");
-const categories = ["beauty", "skin-care", "fragrances", "home-decoration"];
+
+// Function to retrieve the category from the URL and format it
+function getQueryParam(param) {
+  const urlParams = new URLSearchParams(window.location.search);
+  let category = urlParams.get(param);
+
+  // Convert spaces to dashes for the proper category format
+  if (category) {
+    category = category.replace(/\s+/g, "-").toLowerCase(); // Replace spaces with dashes and make it lowercase
+  }
+
+  return category;
+}
+
+// Get the category from the URL
+const category = getQueryParam("category");
 
 async function getData() {
   try {
-    const responses = await Promise.all(
-      categories.map((category) =>
-        fetch(`https://dummyjson.com/products/category/${category}`).then((res) => res.json())
-      )
-    );
+    // If a category is specified, fetch only that category's products
+    const categoryToFetch = category || "beauty"; // Default to "beauty" if no category is specified
 
-    const allProducts = responses.flatMap((res) => res.products); // Combine all products
-    showProducts(allProducts);
+    const response = await fetch(`https://dummyjson.com/products/category/${categoryToFetch}`);
+    const data = await response.json();
+
+    showProducts(data.products); // Show products for the specific category
   } catch (error) {
     console.error("Error fetching data:", error);
   }
@@ -27,11 +41,10 @@ function showProducts(products) {
             />
           </a>
           <h3>${product.title}</h3>
-          <span class="newPrice"> Now: kr. ${product.price}</span>
-          <p>Pris: kr. ${product.price}</p>
+          <p>Pris: ${product.price} DKK</p>
         </div>`
     )
-    .join(``);
+    .join("");
 
   productlist.innerHTML = markup;
 }

@@ -59,7 +59,8 @@ h2 {
 }
 
 p,
-span {
+span,
+h3 {
   font-family: "open sans";
 }
 
