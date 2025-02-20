@@ -57,11 +57,12 @@ function makeList(data, domSelector, url, subCategories, sentCat) {
     .map(
       ([key, value]) => `<div class="dropdown">
       <div class="dropdownheader">
-          <p>${key.charAt(0).toUpperCase() + key.slice(1)}</p> 
+          <p class="headercont">${key.charAt(0).toUpperCase() + key.slice(1)}</p> 
           <div class="arrow"></div>
       </div>
       <div class="navcontent">
-          ${seperate(value)}
+      <a href="produktliste.html?category=${sentCat}&${key}" class="headercont">Browse All ${title} ${key.charAt(0).toUpperCase() + key.slice(1)}</a>
+          ${seperate(value).replace(/SENTCAT/g, sentCat).replace(/SUBCATEGORY/g,  key.slice(0, -1) + "=")}
       </div>
     </div>`
     )
@@ -70,10 +71,12 @@ function makeList(data, domSelector, url, subCategories, sentCat) {
   let listContent = `
     <div class="dropdown">
       <div class="dropdownheader">
-          <p>${title}</p>
+          <p class="headercont">${title}</p>
           <div class="arrow"></div>
       </div>
       <div class="navcontent">
+      <a href="produktliste.html?category=${sentCat}" class="headercont">Browse All ${title} Products ></a>
+      
       ${subListContent}
       </div></div>`;
   domSelector.innerHTML = listContent;
@@ -136,7 +139,7 @@ dropdowns.forEach((dropdown) => {
 function seperate(arr) {
   return arr
     .map((item) => {
-      return `<a href="#">${item}</a>`; /* Side link her */
+      return `<a href="produktliste.html?category=SENTCAT&SUBCATEGORY${item.replace(/ /g, "_").replace(/&/g, "and").toLowerCase()}" class="standard">${item}</a>`; /* Side link her */
     })
     .join("");
 }
